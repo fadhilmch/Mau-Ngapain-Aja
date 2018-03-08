@@ -36,25 +36,18 @@ module.exports = {
         Todo.findOne({
             _id: req.params.id
         })
-            .populate('List', 'title')
-            .exec(function (err, data) {
-                if (err) return res.status(400).json({ message: err })
+            .exec()
+            .then((data) => {
                 res.status(200).json({
                     message: 'Success get data !',
                     data
                 })
-            });
-        // .then((data) => {
-        //     res.status(200).json({
-        //         message : 'Success get data !',
-        //         data
-        //     })
-        // })
-        // .catch(err => {
-        //     res.status(400).json({
-        //         message : `Failed to get data !`
-        //     })
-        // })
+            })
+            .catch(err => {
+                res.status(400).json({
+                    message: `Failed to get data !`
+                })
+            })
     },
     update: (req, res) => {
         Todo.findByIdAndUpdate(req.params.id, {
