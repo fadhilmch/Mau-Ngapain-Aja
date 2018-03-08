@@ -14,7 +14,7 @@ var todos = require('./routes/todos');
 
 var app = express();
 
-const dbURL = 'mongodb://localhost/mau-ngapain-aja';
+const dbURL = 'mongodb://localhost:27017/mau-ngapain-aja';
 const db = mongoose.connection;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
