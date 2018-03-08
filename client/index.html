@@ -4,32 +4,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mau Ngapain Aja</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
+    <nav>
+        <div class='nav-wrapper blue'>
+            <a href="#" class='brand-logo left'>Manja</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="">fadhilmch</a></li>
+                <li><a href="">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
     <h1>Manja</h1>
     <h3>Mau Ngapain Aja?</h3>
-    <div class="nav-wrapper">
-        <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Logout</a></li>
+    
+    <div id="slide-out" class='sidebar'>
+        <ul class="side-nav">
+            <li><a href=""></a>Today</li>
+            <li><a href=""></a>Week</li>
+            <div class='category'>
+                <li><a href=""></a>Groceries</li>
+                <li><a href=""></a>Works</li>
+            </div>
+            <li><a href="">Create List</a></li>
+
         </ul>
     </div>
 
-    <div class='sidebar'>
-        <p><a href=""></a>Today</p>
-        <p><a href=""></a>Week</p>
-        <div class='category'>
-            <p><a href=""></a>Groceries</p>
-            <p><a href=""></a>Works</p>
-        </div>
-        <p><a href="">Create List</a></p>
-    </div>
     <div class='container'>
         <input type="text" name="todo" placeholder="Add a to-do..">
         <div class='list done'>
-            <p><a href="">[]</a>To do 1 <a href="">*</a></p>
-            <p><a href="">[]</a>To do 1 <a href="">*</a></p>
-            <p><a href="">[]</a>To do 1 <a href="">*</a></p>
+            <div class="row">
+               <div class="col s12 m15">
+                 <div class="card grey lighten-1">
+                   <div class="card-content white-text">
+                     <span>
+                         <a href=""><i class="material-icons">crop_din</i></a>To do 1 <a href=""><i class="material-icons">star_border</i></a>
+                     </span>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="col s12 m15">
+                 <div class="card grey lighten-1">
+                   <div class="card-content white-text">
+                     <span>
+                         <a href=""><i class="material-icons">crop_din</i></a>To do 1 <a href=""><i class="material-icons">star_border</i></a>
+                     </span>
+                   </div>
+                 </div>
+               </div>
+
+               <div class="col s12 m15">
+                 <div class="card grey lighten-1">
+                   <div class="card-content white-text">
+                     <span>
+                         <a href=""><i class="material-icons">crop_din</i></a>To do 1 <a href=""><i class="material-icons">star_border</i></a>
+                     </span>
+                   </div>
+                 </div>
+               </div>
+
         </div>
 
         <div class='list done'>
@@ -38,6 +81,9 @@
             <p><a href="">[]</a>To do 1 <a href="">*</a></p>
         </div>
     </div>
+    <!--Import jQuery before materialize.js-->
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 <script src="script.js" charset="utf-8"></script>
 </html>
