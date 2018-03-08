@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const listSchema = new Schema({
     title:String,
     todo: [{
         type: Schema.Types.ObjectId,
@@ -9,4 +9,4 @@ const userSchema = new Schema({
     }],
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('List', listSchema);
