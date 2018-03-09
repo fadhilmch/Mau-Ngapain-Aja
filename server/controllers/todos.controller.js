@@ -43,18 +43,12 @@ module.exports = {
                     message: 'Success get data !',
                     data
                 })
-            });
-        // .then((data) => {
-        //     res.status(200).json({
-        //         message : 'Success get data !',
-        //         data
-        //     })
-        // })
-        // .catch(err => {
-        //     res.status(400).json({
-        //         message : `Failed to get data !`
-        //     })
-        // })
+            })
+            .catch(err => {
+                res.status(400).json({
+                    message: `Failed to get data !`
+                })
+            })
     },
     update: (req, res) => {
         Todo.findByIdAndUpdate(req.params.id, {

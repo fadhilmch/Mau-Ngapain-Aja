@@ -19,6 +19,7 @@ module.exports = {
     },
     findAll: (req, res) => {
         List.find()
+        .populate('todo')
         .exec()
         .then((data) => {
             res.status(200).json({
@@ -36,6 +37,7 @@ module.exports = {
         List.findOne({
             _id : req.params.id
         })
+        .populate('todo')
         .exec()
         .then((data) => {
             res.status(200).json({
