@@ -1,6 +1,6 @@
 const mailgun = require("mailgun-js");
 
-function sendMail (userEmail, text){
+function sendingMail (userEmail, text){
     var api_key = 'key-6cfb3472658d33b40397a14f2f374ef4';
     var DOMAIN = 'sandboxeddc1b47658f41c9aa79ab489a64471c.mailgun.org';
     var mailgun = require('mailgun-js')({apiKey: api_key, domain: DOMAIN});
@@ -18,4 +18,4 @@ function sendMail (userEmail, text){
   
   }
 
-  module.exports = {sendMail:sendMail}
+  module.exports = {sendingMail:sendingMail}

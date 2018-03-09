@@ -1,5 +1,6 @@
 const Todo = require('../models/todos.model');
 const List = require('../models/lists.model');
+const {sendingMail} = require('../helpers/sendmail')
 
 module.exports = {
     create: (req, res) => {
@@ -97,6 +98,84 @@ module.exports = {
         })
     },
     sendEmail: (req, res) => {
+        console.log(req.params)
+        const todoId = req.params.id
+        console.log(todoId)
+        List.findOne({'_id': todoId})
+            .exec()
+            .then(response => {
+                const getTodo = response.todo.map(element => {
+                    return new Promise ((resolve, reject) => {
+                        Todo.findOne({'_id': element})
+                            .exec()
+                            .then(result => {
+                                resolve(result)
+                                // console.log(result)
+                            })
+                            .catch(err => {
+                                reject(err)
+                            })
+                    })    
+                })
+                Promise.all(getTodo)
+                    .then(allResult => {
+                        console.log(allResult)
+                        var text = `Title: ${response.title}` + '\n'
+
+                        for (let i = 0; i < allResult.length; i++){
+                            text +=  '- ' + allResult[i].text + '\n'
+                        }
+                        // subdomain emails must be registered in the API
+                        sendingMail('herby.herado@gmail.com', text)
+                        res.status(200).json({
+                            message: 'email sent!'
+                        })
+                    })
+            })
+    },
+    addTimeline: (req, res) => {
+        const todoId = req.params.id
+        List.findOne({'_id': todoId})
+        .exec()
+        .then(response => {
+            const getTodo = response.todo.map(element => {
+                return new Promise ((resolve, reject) => {
+                    Todo.findOne({'_id': element})
+                        .exec()
+                        .then(result => {
+                            resolve(result)
+                            // console.log(result)
+                        })
+                        .catch(err => {
+                            reject(err)
+                        })
+                })    
+            })
+            Promise.all(getTodo)
+                .then(allResult => {
+                    console.log(allResult)
+                    var text = `Title: ${response.title}` + '\n'
+
+                    for (let i = 0; i < allResult.length; i++){
+                        text +=  '- ' + allResult[i].text + '\n'
+                    }
+                    let fb = new FB.Facebook()
         
+                    const token = req.headers.token
+                    const decode = jwt.verify(token,'secret-ui')
+                    console.log(decode.fbToken)
+                    fb.setAccessToken(decode.fbToken);
+                    
+                    
+                    var body = req.headers.content
+                    fb.api('me/feed', 'post', { message: body }, function (res) {
+                        console.log(res)
+                    });
+                    res.status(200).json({
+                        message: 'facebok post sent!'
+                    })
+                })
+        })
+       
     }
 }

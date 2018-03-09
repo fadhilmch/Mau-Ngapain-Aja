@@ -1,6 +1,9 @@
 const User = require('../models/users.model');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const FB = require('fb');
+const jwt = require('jsonwebtoken');
+
 
 const {sendMail} = require('../helpers/sendmail')
 
@@ -30,10 +33,24 @@ module.exports = {
             })
         })
     },
-    sendEmail: (req, res) => {
-        console.log('halo')
-        console.log(req.body.content)
-        sendMail('herby.herado@gmail.com', req.body.content)
-    }
+    timelineFB(req,res){
+        let fb = new FB.Facebook()
+        
+        const token = req.headers.token
+        const decode = jwt.verify(token,'secret-ui')
+        console.log(decode.fbToken)
+        fb.setAccessToken(decode.fbToken);
+        
+        
+        var body = req.headers.content
+        fb.api('me/feed', 'post', { message: body }, function (res) {
+            console.log(res)
+        // if(!res || res.error) {
+        //     console.log(!res ? 'error occurred' : res.error);
+        //     return;
+        // }
+        });
+    },
+    
 
 }
