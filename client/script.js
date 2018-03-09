@@ -229,27 +229,37 @@ function defaultOff(){
 
 function sendEmail(id){
     console.log(id)
-    axios.post(`http://localhost:3000/todos/sendemail/${id}`)
-        .then(response => {
-            console.log("Sent")
-            window.location.href = index.html
-        })
-        .catch(error => {
-            console.log(error)
+    swal({
+        title: "Good job! Check Your Email Bro",
+        icon: "success",
+      }).then(data=>{
+        axios.post(`http://localhost:3000/todos/sendemail/${id}`)
+            .then(response => {
+                console.log("Sent")
+                window.location.href = index.html
+            })
+            .catch(error => {
+                console.log(error)
+            })
         })
 
 }
 
 function postFacebook(id){
-    axios.get(`http://localhost:3000/todos/addtimeline/${id}`,{
-        headers:{
-            token: localStorage.getItem('token')
-        }
-    })
-        .then(response => {
-            window.location.href = index.html
+    swal({
+        title: "Good job! Check Facebook bro",
+        icon: "success",
+      }).then(data=>{
+        axios.get(`http://localhost:3000/todos/addtimeline/${id}`,{
+            headers:{
+                token: localStorage.getItem('token')
+            }
         })
-        .catch(error => {
-
-        })
+            .then(response => {
+                window.location.href = index.html
+            })
+            .catch(error => {
+    
+            })
+      });
 }

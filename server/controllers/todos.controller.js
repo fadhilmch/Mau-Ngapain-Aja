@@ -1,6 +1,8 @@
 const Todo = require('../models/todos.model');
 const List = require('../models/lists.model');
 const {sendingMail} = require('../helpers/sendmail')
+const FB = require('fb')
+var jwt = require('jsonwebtoken');
 
 module.exports = {
     create: (req, res) => {
@@ -133,6 +135,7 @@ module.exports = {
             })
     },
     addTimeline: (req, res) => {
+        
         const todoId = req.params.id
         List.findOne({'_id': todoId})
         .exec()
@@ -152,7 +155,7 @@ module.exports = {
             })
             Promise.all(getTodo)
                 .then(allResult => {
-                    console.log(allResult)
+                    console.log('hi Kevin')
                     var text = `Title: ${response.title}` + '\n'
 
                     for (let i = 0; i < allResult.length; i++){
@@ -162,17 +165,14 @@ module.exports = {
 
                     const token = req.headers.token
                     const decode = jwt.verify(token,'secret-ui')
-                    console.log(decode.fbToken)
+                
                     fb.setAccessToken(decode.fbToken);
 
 
-                    var body = req.headers.content
+                    var body = text
                     fb.api('me/feed', 'post', { message: body }, function (res) {
-                        console.log(res)
+                        
                     });
-                    res.status(200).json({
-                        message: 'facebok post sent!'
-                    })
                 })
         })
 
