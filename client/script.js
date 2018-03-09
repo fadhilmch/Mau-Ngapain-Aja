@@ -19,8 +19,6 @@ axios.get('http://localhost:3000',{
     window.location.href = 'login.html'
   });
 
-  --------------
-
 function getList() {
     axios.get('http://localhost:3000/lists')
         .then((response) => {
