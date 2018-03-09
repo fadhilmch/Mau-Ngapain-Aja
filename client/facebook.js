@@ -1,5 +1,5 @@
 function statusChangeCallback(response) {
-    
+
     // The response object is returned with a status field that lets the
     // app know the current login status of the person.
     // Full docs on the response object can be found in the documentation
@@ -26,13 +26,13 @@ function statusChangeCallback(response) {
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '230908220814678',
-      cookie     : true,  // enable cookies to allow the server to access 
+      cookie     : true,  // enable cookies to allow the server to access
                           // the session
       xfbml      : true,  // parse social plugins on this page
       version    : 'v2.8' // use graph api version 2.8
     });
 
-    // Now that we've initialized the JavaScript SDK, we call 
+    // Now that we've initialized the JavaScript SDK, we call
     // FB.getLoginStatus().  This function gets the state of the
     // person visiting this page and can return one of three states to
     // the callback you provide.  They can be:
@@ -44,9 +44,11 @@ function statusChangeCallback(response) {
     //
     // These three cases are handled in the callback function.
 
+
     // FB.getLoginStatus(function(response) {
     //   statusChangeCallback(response);
     // });
+
 
   };
 
@@ -73,7 +75,7 @@ function statusChangeCallback(response) {
         window.location.href = 'index.html'
       })
       .catch(function (error) {
-        
+
       });
     });
   }

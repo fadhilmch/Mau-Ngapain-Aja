@@ -20,7 +20,7 @@ module.exports = {
                     email:email,
                     facebook_id:idFB
                 })
-                
+
                 newUser.save((err,data)=>{
                     const token = jwt.sign({email:dataUser.email,fbToken: fbToken},'secret-ui')
                     res.status(200).json({
@@ -34,8 +34,7 @@ module.exports = {
     logout(req,res){
         const token = req.body.token
         const decode = jwt.verify(token,'secret-ui')
-        
+
     }
 
 }
-
