@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
-const { create, findAll, findById, update, destroy } = require('../controllers/lists.controller');
+const { create, findAll, findById, update, destroy, addTodo } = require('../controllers/lists.controller');
 
-router.post('/:todoId', create);
+router.post('/', create); //create kerangkanya
+router.post('/:id/todo/:idTodo', addTodo)
+
 router.get('/', findAll);
 router.get('/:id', findById);
 router.put('/:id', update);
