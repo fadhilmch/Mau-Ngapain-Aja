@@ -13,13 +13,13 @@ var users = require('./routes/users');
 var lists = require('./routes/lists');
 var todos = require('./routes/todos');
 const login = require('./routes/login')
-const email = require('./routes/email')
+const register = require('./routes/register')
 
 
 var app = express();
 app.use(cors())
 
-const dbURL = 'mongodb://localhost/mau-ngapain-aja';
+const dbURL = 'mongodb://localhost:27017/mau-ngapain-aja';
 const db = mongoose.connection;
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,7 +39,7 @@ app.use('/users', users);
 app.use('/lists', lists);
 app.use('/todos', todos);
 app.use('/login', login)
-app.use('/email', email)
+app.use('/register', register)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
