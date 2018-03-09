@@ -3,10 +3,26 @@ function logout(){
     window.location.href = 'login.html'
 }
 
-function logout(){
-    localStorage.clear()
-    window.location.href = 'login.html'
-}
+
+$('#test').click(function(){
+    const a = $('.span').text()
+    axios.get('http://localhost:3000/users/timeline',{
+        headers: {token: localStorage.getItem('token'),content:a}
+    })
+    .then((response)=>{
+        console.log('hello')
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+})  
+
+$('#submitMailgun').click(function(){
+    const text = $('#inputList').val()
+    console.log(text)
+})
+
+
 
 // Axios Client Goes Here
 axios.get('http://localhost:3000',{
@@ -19,7 +35,6 @@ axios.get('http://localhost:3000',{
     window.location.href = 'login.html'
   });
 
-  --------------
 
 function getList() {
     axios.get('http://localhost:3000/lists')
@@ -41,7 +56,6 @@ function getTodo(idList) {
                     <div class=row><a href="#"><i class="material-icons side_bar_icons_edit">crop_square</i></a>${todo.text}</div>
                 `)
             })
-            console.log(response.data.data.todo);
         })
 }
 

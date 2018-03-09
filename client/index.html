@@ -42,7 +42,7 @@
         </div>
         <ul id='list' style="margin: -8px 0 0 0">
             <li><div class="divider divider2 ul_sidebar_top"></div></li>
-            <li><a class="a_list_home_side_bar" href=""><i class="material-icons side_bar_icons_li">list</i>Group Project<i class="material-icons side_bar_icons_edit">edit</i></a></li>
+            <li><a onclick="id()" class="a_list_home_side_bar" id="test"><i class="material-icons side_bar_icons_li">list</i><span class="span">Testing</span><i class="material-icons side_bar_icons_edit">edit</i></a></li>
         </ul>
         <ul class="footer_sidebar">
             <li><div class="divider"></div></li>
@@ -52,12 +52,13 @@
     </div>
     <main>
         <div class='container'>
-            <input type="text" placeholder="Add your to do list..">
+            <input id="inputList" type="text" placeholder="Add your to do list..">
+            <button id="submitMailgun">Submit</button>
             <div id='todo'>
 
             </div>
         </div>
-
+        
     </main>
 </body>
 <!-- Axios -->
