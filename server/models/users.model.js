@@ -7,7 +7,7 @@ const userSchema = new Schema({
     password:String,
     facebook_id:String,
     list:[{
-        type: Schema.Type.ObjectId,
+        type: Schema.Types.ObjectId,
         ref:'List'
     }],
 });

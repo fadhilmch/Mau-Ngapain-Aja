@@ -1,33 +1,15 @@
-function getList () {
-    $.ajax({
-        url: 'http://localhost:3000/lists',
-        method: 'GET',
-        dataType: 'JSON',
-        success: (response) => {
-            populateList(response);
-        }
-    })
+function logout(){
+    localStorage.clear()
+    window.location.href = 'login.html'
 }
 
-function populateList(data) {
-    $('#list').empty();
-    if(data.data.length>0){
-        data.data.forEach(list => {
-            $('#list').append(`
-                <li><a href="getTodo()">${list.title}</a></li>
-            `)
-        });
-    }
+// Axios Client Goes Here
+axios.get('http://localhost:3000',{
+    headers: {token: localStorage.getItem('token')}
+})
+  .then(function (response) {
 
-}
-
-$('a').click( function(e) {
-    e.preventDefault(); /*your_code_here;*/ 
-    return false;
-} );
-
-function getTodo() {
-    console.log("halo")
-}
-
-getList();
+  })
+  .catch(function (error) {
+    window.location.href = 'login.html'
+  });

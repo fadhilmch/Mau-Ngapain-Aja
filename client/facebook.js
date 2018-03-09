@@ -44,9 +44,9 @@ function statusChangeCallback(response) {
     //
     // These three cases are handled in the callback function.
 
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
+    // FB.getLoginStatus(function(response) {
+    //   statusChangeCallback(response);
+    // });
 
   };
 
@@ -62,17 +62,15 @@ function statusChangeCallback(response) {
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
   function testAPI(sCCResponse) {
-    
-    FB.api('/me', {fields:['name','email','token']} , function(response) {
-      console.log(response)
-      console.log(sCCResponse.authResponse)
+    FB.api('/me', {fields:['name','email']} , function(response) {
       axios.post('http://localhost:3000/login/fb', {
         idFB: response.id,
         email: response.email,
-        token: sCCResponse.token
+        fbToken: sCCResponse.authResponse.accessToken
       })
-      .then(function (response) {
-        
+      .then(function (response_login) {
+        localStorage.setItem('token', response_login.data.token);
+        window.location.href = 'index.html'
       })
       .catch(function (error) {
         
