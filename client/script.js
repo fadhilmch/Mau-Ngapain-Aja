@@ -3,11 +3,6 @@ function logout(){
     window.location.href = 'login.html'
 }
 
-function logout(){
-    localStorage.clear()
-    window.location.href = 'login.html'
-}
-
 // Axios Client Goes Here
 axios.get('http://localhost:3000/',{
     headers: {token: localStorage.getItem('token')}
@@ -18,8 +13,6 @@ axios.get('http://localhost:3000/',{
   .catch(function (error) {
     window.location.href = 'login.html'
   });
-
-  --------------
 
 function getList() {
     axios.get('http://localhost:3000/lists')
