@@ -43,22 +43,41 @@
         <ul id='list' style="margin: -8px 0 0 0">
             <li><div class="divider divider2 ul_sidebar_top"></div></li>
             <li><a class="a_list_home_side_bar" href=""><i class="material-icons side_bar_icons_li">list</i>Group Project<i class="material-icons side_bar_icons_edit">edit</i></a></li>
+
         </ul>
         <ul class="footer_sidebar">
             <li><div class="divider"></div></li>
-            <li><a class="a_list_home_side_bar_bot" href=""><i style="float:left" class="material-icons side_bar_icons_li">add</i>Create List</a></li>
+            <li><a onclick='dialogAddList()' class="a_list_home_side_bar_bot"><i style="float:left" class="material-icons side_bar_icons_li">add</i>Create List</a></li>
 
         </ul>
     </div>
     <main>
         <div class='container'>
-            <input type="text" placeholder="Add your to do list..">
+            <input id="add_todo" type="text" placeholder="Add your to do list..">
             <div id='todo'>
 
             </div>
         </div>
 
     </main>
+
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h5 class='title center'>Create New List</h5>
+        <input type="text" id='new_list' placeholder="Add List..">
+      </div>
+      <div class="modal-footer">
+          <a href='#' class="modal-action modal-close waves-effect waves-red btn-flat grey lighten-3">Cancel</a>
+        <a onclick="addList()"class="modal-action modal-close waves-effect waves-green btn-flat grey lighten-3">Save</a>
+      </div>
+    </div>
+
+
+
 </body>
 <!-- Axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
