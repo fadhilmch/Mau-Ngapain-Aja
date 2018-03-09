@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var cors = require('cors')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -13,6 +14,7 @@ var todos = require('./routes/todos');
 
 
 var app = express();
+app.use(cors())
 
 const dbURL = 'mongodb://localhost/mau-ngapain-aja';
 const db = mongoose.connection;

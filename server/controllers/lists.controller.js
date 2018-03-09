@@ -3,7 +3,7 @@ const List = require('../models/lists.model');
 module.exports = {
     create: (req, res) => {
         List.create({
-            title: req.body.text,
+            title: req.body.title,
         }, (err, data) => {
             if (err) {
                 return res.status(400).json({

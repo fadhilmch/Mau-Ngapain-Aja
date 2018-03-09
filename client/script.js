@@ -1,7 +1,7 @@
 function getList () {
     $.ajax({
-        url: 'http://localhost:3000/list',
-        method: 'get',
+        url: 'http://localhost:3000/lists',
+        method: 'GET',
         dataType: 'JSON',
         success: (response) => {
             populateList(response);
@@ -11,11 +11,18 @@ function getList () {
 
 function populateList(data) {
     $('#list').empty();
-    data.forEach(list => {
-        $('#list').append(`
-            <li><a href="">${list.title}</a></li>
-        `)
-    });
+    if(data.data.length>0){
+        data.data.forEach(list => {
+            $('#list').append(`
+                <li><a href="getTodo()">${list.title}</a></li>
+            `)
+        });
+    }
+
+}
+
+function getTodo() {
+    console.log("halo")
 }
 
 getList();
