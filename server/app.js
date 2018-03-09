@@ -13,6 +13,7 @@ var users = require('./routes/users');
 var lists = require('./routes/lists');
 var todos = require('./routes/todos');
 const login = require('./routes/login')
+const email = require('./routes/email')
 
 
 var app = express();
@@ -38,6 +39,7 @@ app.use('/users', users);
 app.use('/lists', lists);
 app.use('/todos', todos);
 app.use('/login', login)
+app.use('/email', email)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
