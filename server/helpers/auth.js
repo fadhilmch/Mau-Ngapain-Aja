@@ -4,11 +4,13 @@ module.exports = {
     authlogin(req,res,next){
         if(req.headers.token !== 'null'){
             const token = req.headers.token
-            const decode = jwt.verify(token,'secret-ui')
-            next()
+            let decode = null
+        
+            decode = jwt.verify(token,'secret-ui')
+
+           next()
         }else{
             next('error')
         }
-        
     }
 }

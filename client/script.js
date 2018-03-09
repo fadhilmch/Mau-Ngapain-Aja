@@ -43,6 +43,7 @@ function getList() {
         .then((response) => {
             response.data.data.forEach(list => {
                 $('#list').append(`
+<<<<<<< HEAD
                     <li>
 
                     <a style="display: inline-block;" href="#" onclick="getTodo('${list._id}')">${list.title}</a>
@@ -77,6 +78,9 @@ function getList() {
                     </button>
 
                     </li>
+=======
+                    <li><a href="#" onclick="getTodo('${list._id}')">${list.title}</a> <i onclick="sendEmail('${list._id}')" class="material-icons">email</i></li>
+>>>>>>> email
                 `)
             })
         })
@@ -225,4 +229,24 @@ getList();
 
 function defaultOff(){
 
+}
+
+function sendEmail(id){
+    axios.post(`http://localhost:3000/todos/sendemail/${id}`)
+        .then(response => {
+            window.location.href = index.html
+        })
+        .catch(error => {
+        })
+
+}
+
+function postFacebook(id){
+    axios.post(`http://localhost:3000/todos/addtimeline/${id}`)
+        .then(response => {
+            window.location.href = index.html
+        })
+        .catch(error => {
+
+        })
 }

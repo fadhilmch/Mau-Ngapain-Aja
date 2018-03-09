@@ -5,6 +5,8 @@ const FB = require('fb');
 const jwt = require('jsonwebtoken');
 
 
+const {sendMail} = require('../helpers/sendmail')
+
 
 module.exports = {
     getUserData(req,res){

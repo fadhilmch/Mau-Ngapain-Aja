@@ -38,7 +38,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/lists', lists);
 app.use('/todos', todos);
-app.use('/login', login);
+app.use('/login', login)
 app.use('/register', register)
 
 // catch 404 and forward to error handler
