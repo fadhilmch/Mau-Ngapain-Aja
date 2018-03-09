@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
-const {loginFB} = require('../controllers/login.controller')
+const {loginFB,logout} = require('../controllers/login.controller')
 
 router.post('/fb', loginFB)
+router.post('/out',logout)
 
 module.exports = router

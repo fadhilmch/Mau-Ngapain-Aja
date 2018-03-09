@@ -1,23 +1,16 @@
-
-$('#login_switch').click(function(){
-    $('#signup_form').css('display','none')
-    $('#login_form').css('display','block')
-    
-})
-
-$('#signup_switch').click(function(){
-    $('#login_form').css('display','none')
-    $('#signup_form').css('display','block')
-})
-
-$('#login_switch').mousedown(function(){
-    event.preventDefault();
-    console.log('hello')
-})
-
-
-function defaultOff(){
-    
+function logout(){
+    localStorage.clear()
+    window.location.href = 'login.html'
 }
 
 // Axios Client Goes Here
+axios.get('http://localhost:3000',{
+    headers: {token: localStorage.getItem('token')}
+})
+  .then(function (response) {
+    
+  })
+  .catch(function (error) {
+    window.location.href = 'login.html'
+  });
+

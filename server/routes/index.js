@@ -1,12 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
+const {authlogin} = require('../helpers/auth')
+const {getUserData} = require('../controllers/users.controller')
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
+router.get('/', authlogin ,getUserData)
 
 module.exports = router;
