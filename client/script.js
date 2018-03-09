@@ -43,7 +43,20 @@ function getList() {
         .then((response) => {
             response.data.data.forEach(list => {
                 $('#list').append(`
-                    <li><a href="#" onclick="getTodo('${list._id}')">${list.title}</a></li>
+                    <li>
+
+                    <a style="display: inline-block;" href="#" onclick="getTodo('${list._id}')">${list.title}</a>
+
+                    <button class="right" style="
+                    background:none;
+                    outline: none;
+                    border:none;"
+
+                    onclick="deleteList('${list._id}')">
+                        <i class="material-icons side_bar_icons_edit">delete</i>
+                    </button>
+
+                    </li>
                 `)
             })
         })
@@ -56,6 +69,14 @@ function dialogAddList(){
 
 function deleteTodo(id){
     axios.delete(`http://localhost:3000/todos/${id}`)
+        .then(response => {
+            getList()
+            getTodo(currentListId)
+        })
+}
+
+function deleteList(id){
+    axios.delete(`http://localhost:3000/lists/${id}`)
         .then(response => {
             getList()
             getTodo(currentListId)
@@ -94,44 +115,81 @@ function addTodo(todo){
 function getTodo(idList) {
     axios.get(`http://localhost:3000/lists/${idList}`)
         .then(response => {
-            console.log(response)
+
             $('#todo').empty();
             response.data.data.todo.forEach(todo => {
+                let checkBox = false;
+                let active = "";
+                if(todo.status == false){
+                    checkBox = `<i class="material-icons">crop_square</i>`
+                    active = "";
+                }
+                else{
+                    checkBox = `<i class="material-icons">check_box</i>`
+                    active = 'disabled';
+                }
+                let starred = false;
+                if(todo.starred == false){
+                    starred = `<i class="material-icons">star_border</i>`
+                }
+                else{
+                    starred = `<i class="material-icons">star</i>`
+                }
 
-                $('#todo').append(`
+                let templatePrintTodo = `
                     <div class=row>
-                    <a href = "" onclick='changeToDone('todo._id')'>
-                        <i class="material-icons">crop_square</i>
-                    </a>
+                    <button ${active} style="
+                    background:none;
+                    outline: none;
+                    border:none;"
+                    onclick="changeToDone('${todo._id}')">
+                        ${checkBox}
+                    </button>
+
                         ${todo.text}
 
-                        <a onclick='toggleStarred('todo._id')'>
-                            <i class="side_bar_icons_edit material-icons">star_border</i>
-                        </a>
+                        <button class="right" style="
+                        background:none;
+                        outline: none;
+                        border:none;"
+                        onclick="toggleStarred('${todo._id}',${todo.starred})">
+                            ${starred}
+                        </button>
 
-                        <a href='#'>
+                        <button class="right" style="
+                        background:none;
+                        outline: none;
+                        border:none;"
+                        onclick="deleteTodo('${todo._id}')">
                             <i class="material-icons side_bar_icons_edit">delete</i>
-                        </a>
+                        </button>
 
 
                     </div>
-                `)
+                `
+                $('#todo').append(templatePrintTodo)
             })
             currentListId = idList;
             console.log(response.data.data.todo);
         })
 }
 
-function toggleStarred(){
-    console.log('Starred')
+function toggleStarred(id, star){
+    axios.put(`http://localhost:3000/todos/${id}`, {
+        starred: !star
+    })
+        .then(response => {
+            getList()
+            getTodo(currentListId)
+        })
 }
 
 function changeToDone(id){
+    // console.log("masuk")
     axios.put(`http://localhost:3000/todos/${id}`, {
         status: true
     })
         .then(response => {
-            console.log(id + " done")
             getList()
             getTodo(currentListId)
         })

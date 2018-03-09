@@ -69,10 +69,7 @@ module.exports = {
             })
     },
     update: (req, res) => {
-        Todo.findByIdAndUpdate(req.params.id, {
-            text: req.body.text,
-            due_date: req.body.due_date
-        }, { new: true }, (err, data) => {
+        Todo.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, data) => {
             if (err) {
                 return res.status(400).json({
                     message: 'Failed to update todo'
