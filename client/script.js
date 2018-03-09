@@ -19,7 +19,7 @@ function getList() {
         .then((response) => {
             response.data.data.forEach(list => {
                 $('#list').append(`
-                    <li><a href="#" onclick="getTodo('${list._id}')">${list.title}</a></li>
+                    <li><a href="#" onclick="getTodo('${list._id}')">${list.title}</a> <i onclick="sendEmail('${list._id}')" class="material-icons">email</i></li>
                 `)
             })
         })
@@ -56,3 +56,7 @@ $("#addList").click(function (){
 
         })
 })
+
+function sendEmail(id){
+    console.log(id)
+}

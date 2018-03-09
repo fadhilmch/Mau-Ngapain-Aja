@@ -95,5 +95,8 @@ module.exports = {
                 message: 'Todo deleted',
             })
         })
+    },
+    sendEmail: (req, res) => {
+        
     }
 }
