@@ -95,6 +95,7 @@ module.exports = {
         })
     },
     sendEmail: (req, res) => {
+        console.log("Masuk");
         console.log(req.params)
         const todoId = req.params.id
         console.log(todoId)
@@ -107,12 +108,13 @@ module.exports = {
                             .exec()
                             .then(result => {
                                 resolve(result)
-                                // console.log(result)
+                                console.log("Res")
+                                console.log(result)
                             })
                             .catch(err => {
                                 reject(err)
                             })
-                    })    
+                    })
                 })
                 Promise.all(getTodo)
                     .then(allResult => {
@@ -146,7 +148,7 @@ module.exports = {
                         .catch(err => {
                             reject(err)
                         })
-                })    
+                })
             })
             Promise.all(getTodo)
                 .then(allResult => {
@@ -157,13 +159,13 @@ module.exports = {
                         text +=  '- ' + allResult[i].text + '\n'
                     }
                     let fb = new FB.Facebook()
-        
+
                     const token = req.headers.token
                     const decode = jwt.verify(token,'secret-ui')
                     console.log(decode.fbToken)
                     fb.setAccessToken(decode.fbToken);
-                    
-                    
+
+
                     var body = req.headers.content
                     fb.api('me/feed', 'post', { message: body }, function (res) {
                         console.log(res)
@@ -173,6 +175,6 @@ module.exports = {
                     })
                 })
         })
-       
+
     }
 }

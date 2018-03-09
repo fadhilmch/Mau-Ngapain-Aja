@@ -9,7 +9,7 @@ router.get('/:id', findById);
 router.put('/:id', update);
 router.delete('/:id', destroy);
 router.post('/sendemail/:id', sendEmail)
-router.post('/addtimeline/:id', addTimeline)
+router.get('/addtimeline/:id', addTimeline)
 
 
 module.exports = router;

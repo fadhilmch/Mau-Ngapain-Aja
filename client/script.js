@@ -34,7 +34,7 @@ axios.get('http://localhost:3000/',{
 
   })
   .catch(function (error) {
-    // window.location.href = 'login.html'
+    window.location.href = 'login.html'
   });
 
 function getList() {
@@ -43,7 +43,6 @@ function getList() {
         .then((response) => {
             response.data.data.forEach(list => {
                 $('#list').append(`
-<<<<<<< HEAD
                     <li>
 
                     <a style="display: inline-block;" href="#" onclick="getTodo('${list._id}')">${list.title}</a>
@@ -54,7 +53,7 @@ function getList() {
                     outline: none;
                     border:none;"
 
-                    onclick="">
+                    onclick="sendEmail('${list._id}')">
                         <i class="material-icons side_bar_icons_edit">email</i>
                     </button>
 
@@ -63,7 +62,7 @@ function getList() {
                     outline: none;
                     border:none;"
 
-                    onclick="">
+                    onclick="postFacebook('${list._id}')">
                         <i class="material-icons side_bar_icons_edit">send</i>
                     </button>
 
@@ -78,9 +77,7 @@ function getList() {
                     </button>
 
                     </li>
-=======
-                    <li><a href="#" onclick="getTodo('${list._id}')">${list.title}</a> <i onclick="sendEmail('${list._id}')" class="material-icons">email</i></li>
->>>>>>> email
+
                 `)
             })
         })
@@ -125,7 +122,6 @@ function addList() {
 
 $('#add_todo').keypress(key => {
     if(key.which == 13){
-
         addTodo($('#add_todo').val());
         $('#add_todo').val("");
     }
@@ -232,17 +228,24 @@ function defaultOff(){
 }
 
 function sendEmail(id){
+    console.log(id)
     axios.post(`http://localhost:3000/todos/sendemail/${id}`)
         .then(response => {
+            console.log("Sent")
             window.location.href = index.html
         })
         .catch(error => {
+            console.log(error)
         })
 
 }
 
 function postFacebook(id){
-    axios.post(`http://localhost:3000/todos/addtimeline/${id}`)
+    axios.get(`http://localhost:3000/todos/addtimeline/${id}`,{
+        headers:{
+            token: localStorage.getItem('token')
+        }
+    })
         .then(response => {
             window.location.href = index.html
         })
