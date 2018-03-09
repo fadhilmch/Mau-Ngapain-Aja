@@ -1,4 +1,5 @@
 const Todo = require('../models/todos.model');
+const List = require('../models/lists.model');
 
 module.exports = {
     create: (req, res) => {
@@ -11,9 +12,27 @@ module.exports = {
                     message: 'Failed to create todo'
                 })
             }
-            res.status(200).json({
-                message: 'Todo created',
-                data
+            List.findOne({
+                _id : req.params.id
+            })
+            .exec()
+            .then((list) => {
+                console.log("List "+list)
+                let updateTodo = list.todo;
+                updateTodo.push(data._id)
+                List.findByIdAndUpdate(req.params.id,{
+                    todo: updateTodo,
+                }, {new :true}, (err, list2) => {
+                    if (err) {
+                        return res.status(400).json({
+                            message: 'Failed to add todo'
+                        })
+                    }
+                    res.status(200).json({
+                        message: 'Todo added',
+                        data:list2
+                    })
+                })
             })
         })
     },
