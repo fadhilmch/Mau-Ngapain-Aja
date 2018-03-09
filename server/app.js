@@ -5,14 +5,18 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+const cors = require('cors')
+const FB = require('fb');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var lists = require('./routes/lists');
 var todos = require('./routes/todos');
+const login = require('./routes/login')
 
 
 var app = express();
+app.use(cors())
 
 const dbURL = 'mongodb://localhost/mau-ngapain-aja';
 const db = mongoose.connection;
@@ -27,11 +31,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors())
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/lists', lists);
 app.use('/todos', todos);
+app.use('/login', login)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -3,8 +3,7 @@ const List = require('../models/lists.model');
 module.exports = {
     create: (req, res) => {
         List.create({
-            title: req.body.text,
-            todo: req.params.todoId
+            title: req.body.title,
         }, (err, data) => {
             if (err) {
                 return res.status(400).json({
@@ -14,6 +13,29 @@ module.exports = {
             res.status(200).json({
                 message: 'List created',
                 data
+            })
+        })
+    },
+    addTodo: (req, res) => {
+        List.findOne({
+            _id : req.params.id
+        })
+        .exec()
+        .then((data) => {
+            let updateTodo = data.todo;
+            updateTodo.push(req.params.idTodo)
+            List.findByIdAndUpdate(req.params.id,{
+                todo: updateTodo,
+            }, {new :true}, (err, data) => {
+                if (err) {
+                    return res.status(400).json({
+                        message: 'Failed to add todo'
+                    })
+                }
+                res.status(200).json({
+                    message: 'Todo added',
+                    data
+                })
             })
         })
     },

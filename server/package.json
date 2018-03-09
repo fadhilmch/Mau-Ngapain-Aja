@@ -15,10 +15,10 @@
     "ejs": "~2.5.7",
     "express": "~4.15.5",
     "fb": "^2.0.0",
-    "google-auth-library": "^0.12.0",
-    "googleapis": "^25.0.0",
+    "jsonwebtoken": "^8.2.0",
     "mongoose": "^5.0.9",
     "morgan": "~1.9.0",
+    "oauth": "^0.9.15",
     "oauth2": "0.0.1",
     "serve-favicon": "~2.4.5",
     "xoauth2": "^1.2.0"
