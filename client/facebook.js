@@ -25,13 +25,8 @@ function statusChangeCallback(response) {
 
   window.fbAsyncInit = function() {
     FB.init({
-<<<<<<< bccc264a95cd6440eb304a03e31180596112d46c
-      appId      : '200716787345167',
-      cookie     : true,  // enable cookies to allow the server to access 
-=======
       appId      : '230908220814678',
       cookie     : true,  // enable cookies to allow the server to access
->>>>>>> Done css login and 50% login home
                           // the session
       xfbml      : true,  // parse social plugins on this page
       version    : 'v2.8' // use graph api version 2.8
