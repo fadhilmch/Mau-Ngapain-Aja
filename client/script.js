@@ -47,6 +47,26 @@ function getList() {
 
                     <a style="display: inline-block;" href="#" onclick="getTodo('${list._id}')">${list.title}</a>
 
+
+                    <button class="right" style="
+                    background:none;
+                    outline: none;
+                    border:none;"
+
+                    onclick="">
+                        <i class="material-icons side_bar_icons_edit">email</i>
+                    </button>
+
+                    <button class="right" style="
+                    background:none;
+                    outline: none;
+                    border:none;"
+
+                    onclick="">
+                        <i class="material-icons side_bar_icons_edit">send</i>
+                    </button>
+
+
                     <button class="right" style="
                     background:none;
                     outline: none;
@@ -62,7 +82,12 @@ function getList() {
         })
 }
 
-function dialogAddList(){
+// function emailDialog(){
+//     $('.modal').modal();
+//     $('#modal2').modal('open');
+// }
+
+function dialogAddList(idList){
     $('.modal').modal();
     $('#modal1').modal('open');
 }

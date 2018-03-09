@@ -7,6 +7,10 @@ const listSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Todo'
     }],
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 module.exports = mongoose.model('List', listSchema);

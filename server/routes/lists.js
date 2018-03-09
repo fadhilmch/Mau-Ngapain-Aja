@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const { create, findAll, findById, update, destroy, addTodo } = require('../controllers/lists.controller');
 
-router.post('/', create); //create kerangkanya
+router.post('/', create); 
 router.post('/:id/todo/:idTodo', addTodo)
 
 router.get('/', findAll);
