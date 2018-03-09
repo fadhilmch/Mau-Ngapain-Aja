@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Shadows -->
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Shadows+Into+Light" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Materialize Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body class="body_site_login">
+    
+<div class="row login_page_container white">
+    <div class="title">
+            <h4 class="center-align logo_font">Manja</h4>
+            <i class="material-icons title_icon">create</i>
+    </div>
+        
+<!-- Form Login -->     
+    <form id="signup_form" class="col s12 signup_form">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="full_name_signup" type="text" class="validate">
+                <label class="label_form" for="full_name_signup">Full Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email_signup" type="text" class="validate">
+                <label class="label_form" for="email_signup">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password_signup" type="text" class="validate">
+                <label class="label_form" for="password_signup">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="re_password_signup" type="text" class="validate">
+                <label class="label_form" for="re_password_signup">Re Password</label>
+            </div>
+        </div>
+        <button type="button" class="waves-effect waves-light btn login_button" id="signup_button">SignUp</button>
+        <button oncontextmenu="defaultOff(); return false" type="button" class="waves-effect waves-light btn login_button" id="login_switch" >Have Account</button>
+        <div style="display:inline; margin:0 10px" scope="public_profile,email" onlogin="checkLoginState();" class="fb-login-button size_login_fb" data-width="200px" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+    </form>
+
+    <form id="login_form" class="col s12 login_form">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email_signup" type="text" class="validate">
+                <label class="label_form" for="email_signup">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password_signup" type="text" class="validate">
+                <label class="label_form" for="password_signup">Password</label>
+            </div>
+        </div>
+        <button  type="button" class="waves-effect waves-light btn login_button" id="login_button" >Login</button>
+        <button  type="button" class="waves-effect waves-light btn login_button" id="signup_switch">SignUp</button>
+        <div style="display: inline" scope="public_profile,email" onlogin="checkLoginState();" class="fb-login-button" data-width="200px" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+    </form>
+</div>
+</body>
+<!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!-- Materiliaze CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<!-- Login Script -->
+    <script src="login.js"></script>
+<!-- Facebook Script -->
+    <script src="facebook.js"></script>
+</html>

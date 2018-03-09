@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
+const { create, findAll, findById, update, destroy, addTodo } = require('../controllers/lists.controller');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.post('/', create); //create kerangkanya
+router.post('/:id/todo/:idTodo', addTodo)
+
+router.get('/', findAll);
+router.get('/:id', findById);
+router.put('/:id', update);
+router.delete('/:id', destroy);
 
 module.exports = router;

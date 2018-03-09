@@ -1,26 +1,9 @@
-const User = require('../models/users.model');
-const mongoose = require('mongoose')
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const User  = require('../models/users.model')
 
-module.exports =  {
-    register: (req, res) => {
-        let salt = bcrypt.genSaltSync(saltRounds);
-        let hash = bcrypt.hashSync(req.body.password, salt);
-        User.create({
-            name : req.body.name,
-            email : req.body.email,
-            password : hash
-        }, (err, user) => {
-            if (err) {
-                return res.status(400).json({
-                    message : err
-                })
-            }
-            res.status(200).json({
-                message : 'User registered',
-                data    : user
-            })
+module.exports = {
+    getUserData(req,res){
+        res.status(200).json({
+            message: 'hello'
         })
     }
 }
