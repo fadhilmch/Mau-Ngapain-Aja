@@ -1,88 +1,71 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mau Ngapain Aja</title>
-    <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Shadows -->
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Shadows+Into+Light" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Materialize Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Home</title>
 </head>
 <body>
-    <nav>
-        <div class='nav-wrapper blue'>
-            <a href="#" class='brand-logo left'>Manja</a>
-            <ul id="nav-mobile" class="right">
-                <li><a href="">fadhilmch</a></li>
-                <li><a href="">Logout</a></li>
-            </ul>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="slide-out" class="side-nav fixed">
+        <div class="search_top_left">
+            <div class="search_nest">
+                <input id="searchinput" class="input_search" type="text">
+            </div>
+            <i class="material-icons search_icon">search</i>
+
         </div>
-    </nav>
-    <h1>Manja</h1>
-    <h3>Mau Ngapain Aja?</h3>
-
-    <div class='category'>
-        <ul>
-            <li><a href=""></a>Today</li>
-            <li><a href=""></a>Week</li>
-            <ul id='list'>
-
-            </ul>
-            <li><a href="">Create List</a></li>
+        <div class="user_bio">
+            <div class="user_image">
+                <img src="test.jpg" alt="">
+            </div>
+            <div class="user_name_nest">
+                <a class="user_name_font">Kevin Himawan</a>
+            </div>
+        </div>
+        <ul style="margin: -8px 0 0 0">
+            <li><div class="divider divider2 ul_sidebar_top"></div></li>
+            <li><a class="a_list_home_side_bar" href=""><i class="material-icons side_bar_icons_li">list</i>Group Project<i class="material-icons side_bar_icons_edit">edit</i></a></li>
+        </ul>
+        <ul class="footer_sidebar">
+            <li><div class="divider"></div></li>
+            <li><a class="a_list_home_side_bar_bot" href=""><i style="float:left" class="material-icons side_bar_icons_li">add</i>Create List</a></li>
 
         </ul>
     </div>
+    <main>
 
-    <div class='container'>
-        <input type="text" name="todo" placeholder="Add a to-do..">
-        <div class='list done'>
-            <div class="row">
-               <div class="col s12 m15">
-                 <div class="card grey lighten-1">
-                   <div class="card-content white-text">
-                     <span>
-                         <a href=""><i class="material-icons">crop_din</i></a>To do 1 <a href=""><i class="material-icons">star_border</i></a>
-                     </span>
-                   </div>
-                 </div>
-               </div>
-
-               <div class="col s12 m15">
-                 <div class="card grey lighten-1">
-                   <div class="card-content white-text">
-                     <span>
-                         <a href=""><i class="material-icons">crop_din</i></a>To do 1 <a href=""><i class="material-icons">star_border</i></a>
-                     </span>
-                   </div>
-                 </div>
-               </div>
-
-               <div class="col s12 m15">
-                 <div class="card grey lighten-1">
-                   <div class="card-content white-text">
-                     <span>
-                         <a href=""><i class="material-icons">crop_din</i></a>To do 1 <a href=""><i class="material-icons">star_border</i></a>
-                     </span>
-                   </div>
-                 </div>
-               </div>
-
-        </div>
-
-        <div class='list done'>
-            <p><a href="">[]</a>To do 1 <a href="">*</a></p>
-            <p><a href="">[]</a>To do 1 <a href="">*</a></p>
-            <p><a href="">[]</a>To do 1 <a href="">*</a></p>
-        </div>
-    </div>
-    <!--Import jQuery before materialize.js-->
-     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-     <script type="text/javascript" src="js/materialize.min.js"></script>
+    </main>
 </body>
-<script src="script.js" charset="utf-8"></script>
+<!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<!-- Materiliaze CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<!-- Login Script -->
+    <script src="login.js"></script>
+<!-- Facebook Script -->
+    <script src="facebook.js"></script>
+<!-- General Script -->
+    <script src="script.js"></script>
 </html>

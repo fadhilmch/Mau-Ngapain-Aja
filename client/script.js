@@ -21,6 +21,11 @@ function populateList(data) {
 
 }
 
+$('a').click( function(e) {
+    e.preventDefault(); /*your_code_here;*/ 
+    return false;
+} );
+
 function getTodo() {
     console.log("halo")
 }
