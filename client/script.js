@@ -38,6 +38,16 @@ function dialogAddList(){
     $('#modal1').modal('open');
 }
 
+function deleteTodo(id){
+    axios.delete(`http://localhost:3000/todos/${id}`)
+        .then(response => {
+            getList()
+            getTodo(currentListId)
+        })
+}
+
+
+
 function addList() {
     axios.post('http://localhost:3000/lists', {
         title:$('#new_list').val()
@@ -101,7 +111,6 @@ function toggleStarred(){
 }
 
 function changeToDone(id){
-    console.log("masuk")
     axios.put(`http://localhost:3000/todos/${id}`, {
         status: true
     })
