@@ -11,7 +11,7 @@ function logout(){
 }
 
 // Axios Client Goes Here
-axios.get('http://localhost:3000',{
+axios.get('http://localhost:3000/',{
     headers: {token: localStorage.getItem('token')}
 })
   .then(function (response) {
